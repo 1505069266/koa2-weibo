@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注册页面</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    html{
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .content{
+      display: flex; 
+      align-items:center;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px #aaff;
+    }
+    .content form{
+      display: flex;
+      align-items:center;
+      flex-direction: column;
+    }
+    form input{
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>欢迎注册!</h1>
+    <form action="">
+      <p>账号: <input type="text" placeholder="请输入账号" id="userName"><span></span><span></span></p>
+      
+      <p>密码: <input type="password" placeholder="请输入密码"></p>
+      <p><input type="button" value="注册"><a href="/login">已有账号?</a></p>
+    </form>
+  </div>
+  <script>
+    let userName = document.getElementById("userName")
+    userName.addEventListener("input", (e)=>{
+      console.log(e.target.value)
+      fetch("/api/user/isExist",{
+        method: "post",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          userName: e.target.value
+        })
+      }).then(res=>res.json()).then(res=>{
+        if(res.errno !== 1){
+          
+        }else{
+
+        }
+      })
+    })
+  </script>
+</body>
+</html>
