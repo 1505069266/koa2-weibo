@@ -32,5 +32,9 @@ router.get("/register", async(ctx, next)=>{
   await ctx.render("register", getLoginInfo(ctx))
 })
 
+router.get("/setting", async (ctx, next) => {
+  await ctx.render("/setting")
+})
+
 
 module.exports = router
